@@ -9,9 +9,9 @@ galaxy_info:
 
   platforms:
   - name: Ubuntu
-     versions:
-     - trusty
-    - xenial
+    versions:
+      - trusty
+      - xenial
 
   galaxy_tags:
     - ntp
