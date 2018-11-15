@@ -1,0 +1,19 @@
+---
+# tasks file for ansible-ntp
+
+- name: Installing NTP package
+  apt:
+    name: "{{ ntp_packages }}"
+    state: present
+  become: yes
+
+- name: Set timezone
+  timezone:
+    name: "{{ ntp_timezone }}"
+
+- name: Generated NTP configuration
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+  notify: Restart NTP daemon
+  when: ntp_manage_config

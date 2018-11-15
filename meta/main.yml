@@ -1,0 +1,20 @@
+galaxy_info:
+  author: Mohit Sharma
+  description: Ansible role for configuring and running ntp client
+  company: NYU CUSP Urban Observatory
+
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  platforms:
+  - name: Ubuntu
+     versions:
+     - trusty
+    - xenial
+
+  galaxy_tags:
+    - ntp
+    - system
+    - cusp
+    - urban_observatory
