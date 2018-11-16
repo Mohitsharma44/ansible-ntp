@@ -1,6 +1,7 @@
 ---
 # defaults file for ansible-ntp
 
+ntp_daemon: ntp
 ntp_enabled: true
 ntp_timezone: "America/New_York"
 ntp_manage_config: false

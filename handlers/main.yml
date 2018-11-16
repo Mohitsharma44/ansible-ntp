@@ -15,3 +15,6 @@
     state: stopped
     enabled: false
   when: not ntp_enabled
+
+- name: Update timezone
+  command: dpkg-reconfigure --frontend noninteractive tzdata

@@ -5,11 +5,27 @@
   apt:
     name: "{{ ntp_packages }}"
     state: present
+    update_cache: yes
+    cache_valid_time: 3600
   become: yes
+
+- name: Current timezone
+  command: "cat /etc/timezone"
+  register: current_tz
+  changed_when: false
+
+- name: Remove current localtime
+  file:
+    dest: "/etc/localtime"
+    state: absent
+  become: yes
+  when: current_tz.stdout != ntp_timezone
 
 - name: Set timezone
   timezone:
     name: "{{ ntp_timezone }}"
+  become: yes
+  notify: Restart NTP daemon
 
 - name: Generated NTP configuration
   template:
@@ -17,3 +33,4 @@
     dest: /etc/ntp.conf
   notify: Restart NTP daemon
   when: ntp_manage_config
+  become: yes

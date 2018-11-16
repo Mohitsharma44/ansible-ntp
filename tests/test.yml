@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   vars:
+    ntp_daemon: ntp
     ntp_enabled: true
     ntp_timezone: "America/New_York"
     ntp_packages:
